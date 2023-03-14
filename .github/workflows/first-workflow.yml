@@ -43,8 +43,3 @@ jobs:
       with:
         text: 'ship ship ship!'
         color: 'red'
-
-      - name: setup terraform
-        run: |
-          wget https://releases.hashicorp.com/terraform/0.14.3/terraform_0.14.3_linux_amd64.zip
-          sudo apt-get install unzip        
