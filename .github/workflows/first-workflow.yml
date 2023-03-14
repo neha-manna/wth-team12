@@ -21,7 +21,7 @@ jobs:
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,6 +29,23 @@ jobs:
     - name: Send greeting
       run: |
           echo "Hello ${{ github.event.inputs.name }}"
-          echo "Sleeping 1 mins"
-          sleep 60
-          echo "Bye" 
+          echo "Job1 done" 
+
+  
+        
+  Job 2:
+   
+    needs: greet
+    name: Cowsays
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ship it
+      uses: mscoutermarsh/cowsays-action@master
+      with:
+        text: 'ship ship ship!'
+        color: 'red'
+
+      - name: setup terraform
+        run: |
+          wget https://releases.hashicorp.com/terraform/0.14.3/terraform_0.14.3_linux_amd64.zip
+          sudo apt-get install unzip        
